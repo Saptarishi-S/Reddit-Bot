@@ -1,3 +1,5 @@
+import praw
+
 def main():
     # Reddit API credentials (replace with your own)
     client_id = ""
@@ -14,7 +16,9 @@ def main():
     print(reddit.read_only)
     # Output: True
     subreddit_search = input("Enter subreddit to search: ")
-    for submission in reddit.subreddit(subreddit_search).hot(limit=10):
+    x = int(input("Enter number of posts to display: "))
+    print(f"Displaying top {x} posts in {subreddit_search} in the hot section: ")
+    for submission in reddit.subreddit(subreddit_search).hot(limit=x):
         print(submission.title)
 if __name__ == "__main__":
     main()
