@@ -2,9 +2,9 @@ import praw
 
 def main():
     # Reddit API credentials (replace with your own)
-    client_id = ""
-    client_secret = ""
-    user_agent = ""
+    client_id = "qs3bB9JvKaL2T38Fv4xOfQ"
+    client_secret = "25idV7Gs6y06Q-EUZA2qhDxmclUZjA"
+    user_agent = "web_scrambler by u/GoldenPhaRoaH"
 
     # Create a Reddit instance
     reddit = praw.Reddit(
@@ -12,13 +12,20 @@ def main():
         client_secret=client_secret,
         user_agent=user_agent,
     )
-
     print(reddit.read_only)
-    # Output: True
-    subreddit_search = input("Enter subreddit to search: ")
-    x = int(input("Enter number of posts to display: "))
-    print(f"Displaying top {x} posts in {subreddit_search} in the hot section: ")
-    for submission in reddit.subreddit(subreddit_search).hot(limit=x):
-        print(submission.title)
+
+    subreddit_name = input("Enter name of the Subreddit: ")
+    subreddit = reddit.subreddit(subreddit_name)
+    search_item=input("Term to search for: ")
+
+    print(f"Bot is monitoring r/{subreddit_name} subreddit for posts with the keyword {search_item}...")
+
+    # Start monitoring
+    for submission in subreddit.stream.submissions():
+        if search_item in submission.title.lower():
+            print(f"\nFound a useful tutorial post:")
+            print(f"Title: {submission.title}")
+            print(f"Link: {submission.url}")
+
 if __name__ == "__main__":
     main()
