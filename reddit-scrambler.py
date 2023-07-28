@@ -2,9 +2,9 @@ import praw
 
 def main():
     # Reddit API credentials (replace with your own)
-    client_id = "qs3bB9JvKaL2T38Fv4xOfQ"
-    client_secret = "25idV7Gs6y06Q-EUZA2qhDxmclUZjA"
-    user_agent = "web_scrambler by u/GoldenPhaRoaH"
+    client_id = ""
+    client_secret = ""
+    user_agent = ""
 
     # Create a Reddit instance
     reddit = praw.Reddit(
